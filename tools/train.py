@@ -36,7 +36,7 @@ def parse_args():
         '--no-validate',
         action='store_true',
         help='whether not to evaluate the checkpoint during training')
-    group_gpus = parser.add_mutually_exclusive_group()
+    group_gpus = parser.add_mutually_exclusive_group() # 设置互斥的参数，--gpus，--gpu-ids以及--gpu-id只能存在一个
     group_gpus.add_argument(
         '--gpus',
         type=int,
@@ -45,7 +45,7 @@ def parse_args():
     group_gpus.add_argument(
         '--gpu-ids',
         type=int,
-        nargs='+',
+        nargs='+', # 表示使用了--gpu-ids就应该传入具体的值，不能空着
         help='(Deprecated, please use --gpu-id) ids of gpus to use '
         '(only applicable to non-distributed training)')
     group_gpus.add_argument(
