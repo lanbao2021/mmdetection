@@ -471,6 +471,7 @@ if __name__ == '__main__':
                                        scales_per_octave=3,
                                        ratios=[0.5, 1.0, 2.0],
                                        strides=[8, 16, 32, 64, 128])
-    base_anchors = anchor_generator.base_anchors[0]
+    anchor_generator.grid_anchors(featmap_sizes=[(8, 8), (16, 16), (32, 32), (64, 64), (128, 128)])
+
 
     pass

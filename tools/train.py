@@ -22,7 +22,7 @@ from mmdet.utils import (collect_env, get_device, get_root_logger,
                          update_data_root)
 
 
-def parse_args():
+def parse_args(list_args=None):
     parser = argparse.ArgumentParser(description='Train a detector')
     parser.add_argument('config', help='train config file path')
     parser.add_argument('--work-dir', help='the dir to save logs and models')
@@ -90,7 +90,7 @@ def parse_args():
         '--auto-scale-lr',
         action='store_true',
         help='enable automatically scaling LR.')
-    args = parser.parse_args()
+    args = parser.parse_args(list_args)
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
 
@@ -106,10 +106,11 @@ def parse_args():
 
 
 def main():
-    args = parse_args()
+    list_args = ['/home/lenovo/lfc/mmdetection/configs/retinanet/retinanet_r50_fpn_1x_voc0712.py', '--gpu-id=0']
+    args = parse_args(list_args)
 
     cfg = Config.fromfile(args.config)
-
+    cfg_pretty_text = cfg.pretty_text
     # replace the ${key} with the value of cfg.key
     cfg = replace_cfg_vals(cfg)
 
