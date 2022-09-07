@@ -91,7 +91,7 @@ def parse_args(list_args=None):
         action='store_true',
         help='enable automatically scaling LR.')
     args = parser.parse_args(list_args)
-    if 'LOCAL_RANK' not in os.environ:
+    if 'LOCAL_RANK' not in os.environ:  # 这个os.environ有点意思啊，像系统的环境变量PATH也在里面，可以在调试的时候输出看看
         os.environ['LOCAL_RANK'] = str(args.local_rank)
 
     if args.options and args.cfg_options:

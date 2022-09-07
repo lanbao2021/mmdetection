@@ -4,6 +4,7 @@ import warnings
 from mmcv.cnn import MODELS as MMCV_MODELS
 from mmcv.utils import Registry
 
+# 新建一个Registry实例就是新建一张查询表
 MODELS = Registry('models', parent=MMCV_MODELS)
 
 BACKBONES = MODELS
